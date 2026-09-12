@@ -1,0 +1,19 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowUpRight, Building2, Fence, LandPlot, Mountain, Pickaxe, Ruler, Shovel, Sprout, Waves } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { EstimateBand, PageHero } from "@/components/page-elements";
+import serviceImage from "@/assets/dmr-services.jpg";
+
+export const Route=createFileRoute("/services")({head:()=>({meta:[{title:"Excavation & Landscaping Services | DMR"},{name:"description",content:"Demolition, city work, excavation, drain tile, backfill, aggregates, landscaping, grading, farm work and fencing."},{property:"og:title",content:"DMR Excavation & Landscaping Services"},{property:"og:description",content:"Complete site services from demolition to finish grade."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:Services});
+const services=[
+ [Building2,"Demolition","Careful structural removal, debris handling and complete site clearing prepared for what comes next."],
+ [Ruler,"City Work","Coordinated municipal and utility-related work completed with site awareness and professional discipline."],
+ [Shovel,"Excavating","Foundations, basements, trenches, site preparation and precision earthmoving for projects of every scale."],
+ [Waves,"Drain Tiles","Purposeful drainage systems that redirect water, protect foundations and improve long-term site performance."],
+ [Pickaxe,"Backfill","Correct material placement and compaction around foundations, utilities and completed structures."],
+ [Mountain,"Sand & Gravel","Material supply, delivery and placement for driveways, bases, drainage and construction access."],
+ [Sprout,"Landscaping","Finish grading, shaping, garden preparation and outdoor improvements that bring the entire site together."],
+ [LandPlot,"Connection, Cap Grading & Farm Work","Utility connections, cap grading, field access and practical rural earthwork built around the land."],
+ [Fence,"Fencing","Strong, accurately aligned fencing solutions for homes, farms, boundaries and working properties."],
+] as const;
+function Services(){return <><PageHero eyebrow="Full-service capability" title="The right equipment. The right finish." copy="One capable partner for the groundwork, materials and exterior improvements that move your property forward."/><section className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28"><div className="grid gap-0 lg:grid-cols-[.75fr_1.25fr]"><div className="relative min-h-[480px] overflow-hidden lg:sticky lg:top-24 lg:h-[calc(100vh-8rem)]"><img src={serviceImage} loading="lazy" alt="Excavator cutting a precise drainage trench" width={1600} height={1056} className="absolute inset-0 h-full w-full object-cover"/><div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"/><div className="absolute bottom-8 left-8 right-8"><p className="font-display text-4xl font-black uppercase">Built below.<br/><span className="text-primary">Finished above.</span></p></div></div><div>{services.map(([Icon,title,copy],i)=><article key={title} className="group border-b border-r border-t border-border p-7 transition-colors hover:bg-card md:p-10"><div className="flex gap-6"><span className="font-mono text-xs text-primary">{String(i+1).padStart(2,"0")}</span><div className="flex-1"><Icon className="mb-8 h-7 w-7 text-primary"/><h2 className="text-3xl font-black uppercase md:text-4xl">{title}</h2><p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">{copy}</p></div><ArrowUpRight className="transition-transform group-hover:-translate-y-1 group-hover:translate-x-1"/></div></article>)}</div></div><div className="mt-14 text-center"><Button asChild variant="industrial" size="xl"><Link to="/enquiry">Discuss your project <ArrowUpRight/></Link></Button></div></section><EstimateBand/></>}
